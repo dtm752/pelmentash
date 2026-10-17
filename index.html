@@ -18,8 +18,8 @@
 "location":{"@type":"Place","name":"Синие скалы (Кульсугадыташ), Южноуральская тропа","address":"г. Белорецк, Башкортостан",
 "geo":{"@type":"GeoCoordinates","latitude":53.890780,"longitude":58.513496}},
 "organizer":{"@type":"Organization","name":"Над Землёй (NADZEMLEЙ)","sameAs":"https://vk.ru/nadzemley02"},
-"image":"img/og-2027.jpg","offers":{"@type":"Offer","price":"500","priceCurrency":"RUB","url":"https://vk.me/pelmentash02"},
-"sameAs":"https://vk.ru/pelmentash02"}
+"image":"img/og-2027.jpg","offers":{"@type":"Offer","price":"500","priceCurrency":"RUB","url":"https://vk.me/pelmentash"},
+"sameAs":"https://vk.ru/pelmentash"}
 </script>
 <style>
 :root{--navy:#0E2A47;--ice:#2E7DD1;--snow:#F4F8FC;--fire:#F26A1B;--ink:#12263a;--pale:#eef4fb}
@@ -28,6 +28,9 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 img{max-width:100%;display:block}
 a{color:var(--ice)}
+/* иконки: sprite-символы наследуют цвет через currentColor */
+.ic{width:46px;height:46px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ic svg{width:24px;height:24px;color:#fff}
 .hero{color:#fff;text-align:center;
 background:linear-gradient(180deg,#0E2A47 0%,#0a1f38 100%)}
 .hero .wrap{padding:48px 20px 24px}
@@ -45,7 +48,8 @@ border-radius:50% 50% 45% 55%/100% 100% 8% 12%;transform:rotate(-.7deg) skewX(-1
 line-height:1;margin:4px 0 8px;font-weight:400}
 .slogan{font-size:clamp(18px,3vw,26px);font-weight:600}
 .facts{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0;justify-content:center}
-.facts span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:12px;font-size:14px}
+.facts span{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:8px 14px;border-radius:12px;font-size:14px}
+.facts svg{width:16px;height:16px;color:#cfe0f2;flex:0 0 auto}
 #cd{display:flex;gap:12px;margin:16px auto 20px;justify-content:center}
 #cd div{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:10px 16px;text-align:center;min-width:74px}
 #cd b{font-size:30px;display:block}#cd i{font-style:normal;font-size:12px;opacity:.85}
@@ -61,13 +65,12 @@ h2 em{font-style:normal;color:var(--fire)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:20px 0}
 .stats div{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 6px 20px rgba(14,42,71,.08)}
 .stats b{font-size:30px;color:var(--navy);display:block}
-/* горный гребень-разделитель */
 .ridge{height:22px;margin:6px 0 24px;
 background:
  linear-gradient(135deg,var(--navy) 25%,transparent 25%) -11px 0,
  linear-gradient(225deg,var(--navy) 25%,transparent 25%) -11px 0;
 background-size:22px 22px;background-repeat:repeat-x;opacity:.9}
-/* карточки преимуществ: цифры-водяные знаки, без эмодзи */
+/* карточки преимуществ: медальон-иконка + заголовок в строку */
 .feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
 .feat div{position:relative;overflow:hidden;background:#fff;border-radius:18px;padding:24px 24px 22px;
 box-shadow:0 8px 26px rgba(14,42,71,.07);transition:transform .25s ease,box-shadow .25s ease}
@@ -76,19 +79,20 @@ box-shadow:0 8px 26px rgba(14,42,71,.07);transition:transform .25s ease,box-shad
 border-radius:0 4px 4px 0;transition:width .3s ease}
 .feat div:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(14,42,71,.13)}
 .feat div:hover::before{width:100%}
-.feat .num{position:absolute;top:6px;right:14px;font-size:64px;font-weight:900;line-height:1;
-color:rgba(14,42,71,.06);letter-spacing:-.04em;pointer-events:none}
-.feat h3{position:relative;color:var(--navy);font-size:19px;margin:0 0 8px;padding-right:54px}
-.feat p{position:relative;font-size:15px;color:#3c546b}
-/* блок «Дорога»: вертикальный степпер-маршрут */
-.steps{position:relative;margin:6px 0 4px;padding-left:6px}
-.steps::before{content:"";position:absolute;left:24px;top:10px;bottom:10px;width:2px;background:var(--ice);opacity:.35}
-.step{position:relative;display:grid;grid-template-columns:48px 1fr;gap:16px;padding-bottom:24px}
+.feat .ic{background:var(--navy);margin-bottom:14px}
+.feat div:nth-child(even) .ic{background:var(--fire)}
+.feat h3{color:var(--navy);font-size:19px;margin:0 0 8px}
+.feat p{font-size:15px;color:#3c546b}
+/* блок «Дорога»: степпер с иконками-узлами и номером-бейджем */
+.steps{position:relative;margin:6px 0 4px;padding-left:2px}
+.steps::before{content:"";position:absolute;left:26px;top:14px;bottom:14px;width:2px;background:var(--ice);opacity:.35}
+.step{position:relative;display:grid;grid-template-columns:54px 1fr;gap:16px;padding-bottom:24px}
 .step:last-child{padding-bottom:0}
-.dot{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:18px;
-display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 4px 14px rgba(14,42,71,.25)}
-.step:nth-child(2) .dot{background:var(--fire)}
-.step h3{color:var(--navy);font-size:18px;margin:10px 0 4px}
+.sic{position:relative;width:54px;height:54px;border-radius:16px;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:1;box-shadow:0 4px 14px rgba(14,42,71,.25)}
+.sic svg{width:26px;height:26px;color:#fff}
+.step:nth-child(2) .sic{background:var(--fire)}
+.sic .n{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--navy);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(14,42,71,.25)}
+.step h3{color:var(--navy);font-size:18px;margin:12px 0 4px}
 .step p{font-size:15px;color:#3c546b}
 .tl{border-left:3px solid var(--fire);margin-left:8px;padding-left:26px;display:grid;gap:18px}
 .tl time{font-weight:800;color:var(--fire);font-size:20px}
@@ -98,7 +102,8 @@ display:flex;align-items:center;justify-content:center;position:relative;z-index
 .tix .price{font-size:34px;font-weight:800;color:var(--fire)}
 .tix ul{margin:12px 0 18px;padding-left:18px}
 .tix .btn{margin-top:auto;text-align:center}
-.note{background:#fff;border-left:4px solid var(--fire);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:15px}
+.note{display:flex;gap:10px;align-items:flex-start;background:#fff;border-left:4px solid var(--fire);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:15px}
+.note svg{width:20px;height:20px;color:var(--fire);flex:0 0 auto;margin-top:2px}
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:16px 0}
 .gal img{border-radius:14px;aspect-ratio:1;object-fit:cover;width:100%}
 .poster img{border-radius:20px;box-shadow:0 14px 40px rgba(14,42,71,.25)}
@@ -106,7 +111,8 @@ details{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:10px;
 summary{font-weight:700;cursor:pointer;color:var(--navy)}
 details p{margin-top:8px}
 .geo{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(14,42,71,.08);margin-top:20px;text-align:center}
-.geo h3{color:var(--navy);margin-bottom:6px}
+.geo h3{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--navy);margin-bottom:6px}
+.geo h3 svg{width:20px;height:20px;color:var(--fire)}
 .coord{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.02em;color:var(--navy);word-break:break-all;background:var(--snow);border-radius:10px;padding:8px 12px;display:inline-block;margin:6px 0}
 .geo-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
 .geo-btn{background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:11px 18px;border-radius:12px}
@@ -114,10 +120,27 @@ details p{margin-top:8px}
 .geo small{display:block;margin-top:12px;color:#5a7184;font-size:13px}
 footer{background:var(--navy);color:#fff;padding:38px 0;font-size:15px}
 footer a{color:#9cc4ef}
-@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}.geo-btn{flex:1 1 auto}.feat .num{font-size:52px}.feat h3{padding-right:44px}}
+@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}.geo-btn{flex:1 1 auto}}
 </style>
 </head>
 <body>
+
+<!-- SVG-спрайт: линейные иконки в фирменной сетке, цвет = currentColor -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-trail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 8 11l3 4 4-8 4 13"/><path d="M5 20c2-1 3-3 4-4s3-1 4-2 2-2 3-3" stroke-dasharray="2 2.4"/></symbol>
+<symbol id="i-cauldron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16"/><path d="M5 11a7 7 0 0 0 14 0z"/><path d="M7 18l-2 3M17 18l2 3M12 18v3"/><path d="M9 8c1-1.3 1-2.7 0-4M12 8c1-1.3 1-2.7 0-4M15 8c1-1.3 1-2.7 0-4"/></symbol>
+<symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="2.2"/><circle cx="16" cy="7" r="2.2"/><circle cx="12" cy="13" r="1.8"/><path d="M4 20a4 4 0 0 1 8 0M12 20a4 4 0 0 1 8 0M9.5 20a2.5 2.5 0 0 1 5 0"/></symbol>
+<symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="18" r="2.3"/><circle cx="16" cy="16" r="2.3"/><path d="M9.3 18V6M18.3 16V4M9.3 6l9-2"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5q-3 0-3 3 0 2 3 2M17 5q3 0 3 3 0 2-3 2M12 13v4M9 17h6l1 4H8z"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.5-2.5h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16v-3l2-5h10l2 5v3"/><path d="M7.5 13l1.5-4h6l1.5 4z"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></symbol>
+<symbol id="i-signpost" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V6"/><path d="M12 7h7l2 2-2 2h-7zM12 13H5l-2 2 2 2h7z"/></symbol>
+<symbol id="i-summit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 10 8l4 6 3-5 5 11z"/><path d="M17 9V3M17 4h4l-1.2 1.5L21 7h-4z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10z"/><circle cx="12" cy="11" r="2"/></symbol>
+<symbol id="i-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/><path d="M9 8v8" stroke-dasharray="2 2"/><circle cx="3" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="21" cy="12" r="1.2" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-backpack" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="12" height="11" rx="3"/><path d="M6 12a6 3 0 0 1 12 0M9 9V6a3 3 0 0 1 6 0v3"/><rect x="9" y="14" width="6" height="4" rx="1"/></symbol>
+</defs></svg>
 
 <section class="hero">
   <div class="wrap">
@@ -128,9 +151,9 @@ footer a{color:#9cc4ef}
     <p class="sub">Высокая кухня!</p>
     <p class="slogan">Ходим в горы — едим пельмени!</p>
     <div class="facts">
-      <span>📅 5 января 2027, вторник · старт 12:00</span>
-      <span>📍 Синие скалы · Белорецк · Южноуральская тропа</span>
-      <span>⛰ 948 м — высота «высокой кухни»</span>
+      <span><svg><use href="#i-calendar"/></svg>5 января 2027, вторник · старт 12:00</span>
+      <span><svg><use href="#i-pin"/></svg>Синие скалы · Белорецк · Южноуральская тропа</span>
+      <span><svg><use href="#i-summit"/></svg>948 м — высота «высокой кухни»</span>
     </div>
     <div id="cd"><div><b id="d">—</b><i>дней</i></div><div><b id="h">—</b><i>часов</i></div><div><b id="m">—</b><i>минут</i></div><div><b id="s">—</b><i>секунд</i></div></div>
     <a class="btn" href="#tickets">Купить билет — 500 ₽</a>
@@ -158,24 +181,24 @@ footer a{color:#9cc4ef}
   </div>
   <div class="ridge"></div>
   <div class="feat">
-    <div><span class="num">01</span><h3>Зимний треккинг</h3><p>Восхождение с гидом по Южноуральской тропе — семейные и взрослые маршруты.</p></div>
-    <div><span class="num">02</span><h3>Пельмени на костре</h3><p>Котлы на открытом огне, пельмени локальных производителей, самоварный травяной чай.</p></div>
-    <div><span class="num">03</span><h3>Семейный формат</h3><p>Детям до 5 лет — бесплатно. Мастер-классы, анимация, Дед Мороз и Снегурочка.</p></div>
-    <div><span class="num">04</span><h3>Музыка и костёр</h3><p>Курай на вершине, живая музыка, DJ‑сет и песни у костра.</p></div>
-    <div><span class="num">05</span><h3>Конкурсы и призы</h3><p>Пельменные состязания, конкурс костюмов, эстафеты, награждение.</p></div>
-    <div><span class="num">06</span><h3>Фотозоны</h3><p>Инеевый лес, скальный гребень и вид на Ямантау — кадры на память.</p></div>
+    <div><span class="ic"><svg><use href="#i-trail"/></svg></span><h3>Зимний треккинг</h3><p>Восхождение с гидом по Южноуральской тропе — семейные и взрослые маршруты.</p></div>
+    <div><span class="ic"><svg><use href="#i-cauldron"/></svg></span><h3>Пельмени на костре</h3><p>Котлы на открытом огне, пельмени локальных производителей, самоварный травяной чай.</p></div>
+    <div><span class="ic"><svg><use href="#i-family"/></svg></span><h3>Семейный формат</h3><p>Детям до 5 лет — бесплатно. Мастер-классы, анимация, Дед Мороз и Снегурочка.</p></div>
+    <div><span class="ic"><svg><use href="#i-music"/></svg></span><h3>Музыка и костёр</h3><p>Курай на вершине, живая музыка, DJ‑сет и песни у костра.</p></div>
+    <div><span class="ic"><svg><use href="#i-trophy"/></svg></span><h3>Конкурсы и призы</h3><p>Пельменные состязания, конкурс костюмов, эстафеты, награждение.</p></div>
+    <div><span class="ic"><svg><use href="#i-camera"/></svg></span><h3>Фотозоны</h3><p>Инеевый лес, скальный гребень и вид на Ямантау — кадры на память.</p></div>
   </div>
 </div></section>
 
 <section id="2026" style="background:#e8f0f8"><div class="wrap">
   <h2>Январь 2026: как это <em>было</em></h2>
   <p class="lead">5 января 2026, старт в 12:00. Приветствие ведущей и Дед Мороз со Снегурочкой, экскурсионный подъём по снежному лесу с видом со скал, живая флейта на вершине, пельмени из котлов, блины и пирожки, чай из больших самоваров, конкурсы, флешмобы и фотозоны.</p>
-  <div class="gal"><!-- FILL: сохраните 6 фото из альбома vk.ru/pelmentash02 как img/2026-01.jpg … img/2026-06.jpg -->
+  <div class="gal"><!-- FILL: сохраните 6 фото из альбома vk.ru/pelmentash как img/2026-01.jpg … img/2026-06.jpg -->
     <img src="img/2026-01.jpg" alt="Пельменташ, январь 2026"><img src="img/2026-02.jpg" alt="Пельменташ, январь 2026">
     <img src="img/2026-03.jpg" alt="Пельменташ, январь 2026"><img src="img/2026-04.jpg" alt="Пельменташ, январь 2026">
     <img src="img/2026-05.jpg" alt="Пельменташ, январь 2026"><img src="img/2026-06.jpg" alt="Пельменташ, январь 2026">
   </div>
-  <p>Все цифры, отзывы и фотоальбомы января‑2026 — в сообществе фестиваля: <a href="https://vk.ru/pelmentash02">vk.ru/pelmentash02</a></p>
+  <p>Все цифры, отзывы и фотоальбомы января‑2026 — в сообществе фестиваля: <a href="https://vk.ru/pelmentash">vk.ru/pelmentash</a></p>
 </div></section>
 
 <section id="program"><div class="wrap">
@@ -200,20 +223,20 @@ footer a{color:#9cc4ef}
     <div><h3>Билет фестиваля</h3><span class="price">500 ₽</span>
       <ul><li>Подъём в горы с гидом</li><li>Пельмени и чай из самовара</li><li>Все конкурсы и активности дня</li><li>Детям до 5 лет — бесплатно</li></ul>
       <!-- FILL: заменить href на ссылку билетного оператора, когда заведёте -->
-      <a class="btn" href="https://vk.me/pelmentash02">Купить в группе VK</a></div>
+      <a class="btn" href="https://vk.me/pelmentash">Купить в группе VK</a></div>
   </div>
-  <p class="note">🎟 Продажи открываются в сообществе <a href="https://vk.ru/pelmentash02">vk.ru/pelmentash02</a>. Места на маршрутах ограничены безопасностью, поэтому не откладывайте билет на последний день.</p>
+  <p class="note"><svg><use href="#i-ticket"/></svg><span>Продажи открываются в сообществе <a href="https://vk.ru/pelmentash">vk.ru/pelmentash</a>. Места на маршрутах ограничены безопасностью, поэтому не откладывайте билет на последний день.</span></p>
 </div></section>
 
 <section id="howto"><div class="wrap">
   <h2>Дорога на <em>высокую</em> кухню</h2>
   <div class="steps">
-    <div class="step"><span class="dot">1</span><div><h3>До Белорецка</h3><p>На машине: из Уфы — 250 км по трассе Р‑316, из Магнитогорска — 80 км. Без машины: до Белорецка поездом или автобусом, далее такси до парковки тропы (10–15 минут).</p></div></div>
-    <div class="step"><span class="dot">2</span><div><h3>До подножия</h3><p>От Белорецка по указателям к Южноуральской тропе, парковка у лесной дороги — 1 км от трассы.</p></div></div>
-    <div class="step"><span class="dot">3</span><div><h3>Подъём</h3><p>Набор высоты всего 117 м — проходят даже дети. На вершине ветер и туман: берите тёплую одежду даже в «плюс».</p></div></div>
+    <div class="step"><span class="sic"><svg><use href="#i-car"/></svg><span class="n">1</span></span><div><h3>До Белорецка</h3><p>На машине: из Уфы — 250 км по трассе Р‑316, из Магнитогорска — 80 км. Без машины: до Белорецка поездом или автобусом, далее такси до парковки тропы (10–15 минут).</p></div></div>
+    <div class="step"><span class="sic"><svg><use href="#i-signpost"/></svg><span class="n">2</span></span><div><h3>До подножия</h3><p>От Белорецка по указателям к Южноуральской тропе, парковка у лесной дороги — 1 км от трассы.</p></div></div>
+    <div class="step"><span class="sic"><svg><use href="#i-summit"/></svg><span class="n">3</span></span><div><h3>Подъём</h3><p>Набор высоты всего 117 м — проходят даже дети. На вершине ветер и туман: берите тёплую одежду даже в «плюс».</p></div></div>
   </div>
   <div class="geo">
-    <h3>📍 Координаты площадки — Синие скалы</h3>
+    <h3><svg><use href="#i-pin"/></svg>Координаты площадки — Синие скалы</h3>
     <span class="coord">53.890780, 58.513496</span>
     <div class="geo-row">
       <a class="geo-btn" href="https://yandex.ru/maps/?pt=58.513496,53.890780&z=16&l=map" target="_blank" rel="noopener">Яндекс Карты</a>
@@ -222,7 +245,7 @@ footer a{color:#9cc4ef}
     </div>
     <small>Нажмите кнопку — маршрут построится в приложении карты. Если ссылки не открылись, введите координаты вручную в навигатор: <b>53.890780, 58.513496</b>. Парковка — у трассы по указателям, дальше пешком по тропе.</small>
   </div>
-  <p class="note">🎒 <b>Что взять:</b> термос и кружка · тёплая непромокаемая обувь · запасные варежки · плед · хорошее настроение.</p>
+  <p class="note"><svg><use href="#i-backpack"/></svg><span><b>Что взять:</b> термос и кружка · тёплая непромокаемая обувь · запасные варежки · плед · хорошее настроение.</span></p>
 </div></section>
 
 <section id="faq" style="background:#e8f0f8"><div class="wrap">
@@ -236,7 +259,7 @@ footer a{color:#9cc4ef}
 
 <footer><div class="wrap">
   <p><b>Пельменташ 2027 · IV издание</b> · организатор — туристическая группа <b>NADZEMLEЙ «Над Землёй»</b>: горы, люди, эмоции · <a href="https://vk.ru/nadzemley02">vk.ru/nadzemley02</a></p>
-  <p>Сообщество фестиваля: <a href="https://vk.ru/pelmentash02">vk.ru/pelmentash02</a> · партнёрам: partners@pelmentash.ru</p>
+  <p>Сообщество фестиваля: <a href="https://vk.ru/pelmentash">vk.ru/pelmentash</a> · партнёрам: partners@pelmentash.ru</p>
   <p style="opacity:.7;margin-top:10px">Погодный регламент: при метели и сильном ветре программа переносится на укрытую поляну, решения публикуются в сообществе накануне и в день фестиваля. © Команда фестиваля «Пельменташ».</p>
 </div></footer>
 
