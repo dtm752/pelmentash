@@ -15,7 +15,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Event","name":"Пельменташ 2027","startDate":"2027-01-05T12:00:00+05:00",
-"location":{"@type":"Place","name":"Синие скалы (Кульсугадыташ), Южноуральская тропа","address":"г. Белорецк, Башкортостан"},
+"location":{"@type":"Place","name":"Синие скалы (Кульсугадыташ), Южноуральская тропа","address":"г. Белорецк, Башкортостан",
+"geo":{"@type":"GeoCoordinates","latitude":53.890780,"longitude":58.513496}},
 "organizer":{"@type":"Organization","name":"Над Землёй (NADZEMLEЙ)","sameAs":"https://vk.ru/nadzemley02"},
 "image":"img/og-2027.jpg","offers":{"@type":"Offer","price":"500","priceCurrency":"RUB","url":"https://vk.me/pelmentash02"},
 "sameAs":"https://vk.ru/pelmentash02"}
@@ -79,9 +80,16 @@ h2 em{font-style:normal;color:var(--fire)}
 details{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:10px;box-shadow:0 4px 14px rgba(14,42,71,.06)}
 summary{font-weight:700;cursor:pointer;color:var(--navy)}
 details p{margin-top:8px}
+.geo{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(14,42,71,.08);margin-top:16px;text-align:center}
+.geo h3{color:var(--navy);margin-bottom:6px}
+.coord{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.02em;color:var(--navy);word-break:break-all;background:var(--snow);border-radius:10px;padding:8px 12px;display:inline-block;margin:6px 0}
+.geo-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
+.geo-btn{background:var(--navy);color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:11px 18px;border-radius:12px}
+.geo-btn:hover{background:var(--ice)}
+.geo small{display:block;margin-top:12px;color:#5a7184;font-size:13px}
 footer{background:var(--navy);color:#fff;padding:38px 0;font-size:15px}
 footer a{color:#9cc4ef}
-@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}}
+@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}.geo-btn{flex:1 1 auto}}
 </style>
 </head>
 <body>
@@ -177,6 +185,16 @@ footer a{color:#9cc4ef}
     <div><h3>1. До Белорецка</h3>На машине: из Уфы — 250 км по трассе Р‑316, из Магнитогорска — 80 км. Без машины: до Белорецка поездом или автобусом, далее такси до парковки тропы (10–15 минут).</div>
     <div><h3>2. До подножия</h3>От Белорецка по указателям к Южноуральской тропе, парковка у лесной дороги — 1 км от трассы.</div>
     <div><h3>3. Подъём</h3>Набор высоты всего 117 м — проходят даже дети. На вершине ветер и туман: берите тёплую одежду даже в «плюс».</div>
+  </div>
+  <div class="geo">
+    <h3>📍 Координаты площадки — Синие скалы</h3>
+    <span class="coord">53.890780, 58.513496</span>
+    <div class="geo-row">
+      <a class="geo-btn" href="https://yandex.ru/maps/?pt=58.513496,53.890780&z=16&l=map" target="_blank" rel="noopener">Яндекс Карты</a>
+      <a class="geo-btn" href="https://2gis.ru/geo/58.513496,53.890780" target="_blank" rel="noopener">2ГИС</a>
+      <a class="geo-btn" href="https://www.google.com/maps/search/?api=1&query=53.890780,58.513496" target="_blank" rel="noopener">Google Maps</a>
+    </div>
+    <small>Нажмите кнопку — маршрут построится в приложении карты. Если ссылки не открылись, введите координаты вручную в навигатор: <b>53.890780, 58.513496</b>. Парковка — у трассы по указателям, дальше пешком по тропе.</small>
   </div>
   <p class="note">🎒 <b>Что взять:</b> термос и кружка · тёплая непромокаемая обувь · запасные варежки · плед · хорошее настроение.</p>
 </div></section>
