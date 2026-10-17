@@ -22,7 +22,7 @@
 "sameAs":"https://vk.ru/pelmentash02"}
 </script>
 <style>
-:root{--navy:#0E2A47;--ice:#2E7DD1;--snow:#F4F8FC;--fire:#F26A1B;--ink:#12263a}
+:root{--navy:#0E2A47;--ice:#2E7DD1;--snow:#F4F8FC;--fire:#F26A1B;--ink:#12263a;--pale:#eef4fb}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--snow);line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
@@ -61,10 +61,35 @@ h2 em{font-style:normal;color:var(--fire)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:20px 0}
 .stats div{background:#fff;border-radius:16px;padding:18px;text-align:center;box-shadow:0 6px 20px rgba(14,42,71,.08)}
 .stats b{font-size:30px;color:var(--navy);display:block}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.cards div{background:#fff;border-radius:18px;padding:22px;box-shadow:0 6px 20px rgba(14,42,71,.08)}
-.cards .ico{font-size:34px}
-.cards h3{margin:10px 0 6px;color:var(--navy)}
+/* горный гребень-разделитель */
+.ridge{height:22px;margin:6px 0 24px;
+background:
+ linear-gradient(135deg,var(--navy) 25%,transparent 25%) -11px 0,
+ linear-gradient(225deg,var(--navy) 25%,transparent 25%) -11px 0;
+background-size:22px 22px;background-repeat:repeat-x;opacity:.9}
+/* карточки преимуществ: цифры-водяные знаки, без эмодзи */
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px}
+.feat div{position:relative;overflow:hidden;background:#fff;border-radius:18px;padding:24px 24px 22px;
+box-shadow:0 8px 26px rgba(14,42,71,.07);transition:transform .25s ease,box-shadow .25s ease}
+.feat div:nth-child(even){background:var(--pale)}
+.feat div::before{content:"";position:absolute;top:0;left:0;height:4px;width:30%;background:var(--fire);
+border-radius:0 4px 4px 0;transition:width .3s ease}
+.feat div:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(14,42,71,.13)}
+.feat div:hover::before{width:100%}
+.feat .num{position:absolute;top:6px;right:14px;font-size:64px;font-weight:900;line-height:1;
+color:rgba(14,42,71,.06);letter-spacing:-.04em;pointer-events:none}
+.feat h3{position:relative;color:var(--navy);font-size:19px;margin:0 0 8px;padding-right:54px}
+.feat p{position:relative;font-size:15px;color:#3c546b}
+/* блок «Дорога»: вертикальный степпер-маршрут */
+.steps{position:relative;margin:6px 0 4px;padding-left:6px}
+.steps::before{content:"";position:absolute;left:24px;top:10px;bottom:10px;width:2px;background:var(--ice);opacity:.35}
+.step{position:relative;display:grid;grid-template-columns:48px 1fr;gap:16px;padding-bottom:24px}
+.step:last-child{padding-bottom:0}
+.dot{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:18px;
+display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 4px 14px rgba(14,42,71,.25)}
+.step:nth-child(2) .dot{background:var(--fire)}
+.step h3{color:var(--navy);font-size:18px;margin:10px 0 4px}
+.step p{font-size:15px;color:#3c546b}
 .tl{border-left:3px solid var(--fire);margin-left:8px;padding-left:26px;display:grid;gap:18px}
 .tl time{font-weight:800;color:var(--fire);font-size:20px}
 .tl h3{color:var(--navy);margin:2px 0 4px}
@@ -80,7 +105,7 @@ h2 em{font-style:normal;color:var(--fire)}
 details{background:#fff;border-radius:14px;padding:16px 20px;margin-bottom:10px;box-shadow:0 4px 14px rgba(14,42,71,.06)}
 summary{font-weight:700;cursor:pointer;color:var(--navy)}
 details p{margin-top:8px}
-.geo{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(14,42,71,.08);margin-top:16px;text-align:center}
+.geo{background:#fff;border-radius:16px;padding:22px;box-shadow:0 6px 20px rgba(14,42,71,.08);margin-top:20px;text-align:center}
 .geo h3{color:var(--navy);margin-bottom:6px}
 .coord{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:15px;letter-spacing:.02em;color:var(--navy);word-break:break-all;background:var(--snow);border-radius:10px;padding:8px 12px;display:inline-block;margin:6px 0}
 .geo-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px}
@@ -89,7 +114,7 @@ details p{margin-top:8px}
 .geo small{display:block;margin-top:12px;color:#5a7184;font-size:13px}
 footer{background:var(--navy);color:#fff;padding:38px 0;font-size:15px}
 footer a{color:#9cc4ef}
-@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}.geo-btn{flex:1 1 auto}}
+@media(max-width:640px){section{padding:32px 0}.poster{padding-top:22px}.hero .wrap{padding:40px 20px 20px}#cd div{min-width:64px;padding:8px 10px}#cd b{font-size:22px}.geo-btn{flex:1 1 auto}.feat .num{font-size:52px}.feat h3{padding-right:44px}}
 </style>
 </head>
 <body>
@@ -131,13 +156,14 @@ footer a{color:#9cc4ef}
     <div><b>948 м</b>Синие скалы, Кульсугадыташ</div>
     <div><b>1 км</b>подъём от трассы до вершины</div>
   </div>
-  <div class="cards">
-    <div><span class="ico">⛰</span><h3>Зимний треккинг</h3>Восхождение с гидом по Южноуральской тропе — семейные и взрослые маршруты.</div>
-    <div><span class="ico">🍲</span><h3>Пельмени на костре</h3>Котлы на открытом огне, пельмени локальных производителей, самоварный травяной чай.</div>
-    <div><span class="ico">👪</span><h3>Семейный формат</h3>Детям до 5 лет — бесплатно. Мастер-классы, анимация, Дед Мороз и Снегурочка.</div>
-    <div><span class="ico">🎵</span><h3>Музыка и костёр</h3>Курай на вершине, живая музыка, DJ‑сет и песни у костра.</div>
-    <div><span class="ico">🏆</span><h3>Конкурсы и призы</h3>Пельменные состязания, конкурс костюмов, эстафеты, награждение.</div>
-    <div><span class="ico">📸</span><h3>Фотозоны</h3>Инеевый лес, скальный гребень и вид на Ямантау — кадры на память.</div>
+  <div class="ridge"></div>
+  <div class="feat">
+    <div><span class="num">01</span><h3>Зимний треккинг</h3><p>Восхождение с гидом по Южноуральской тропе — семейные и взрослые маршруты.</p></div>
+    <div><span class="num">02</span><h3>Пельмени на костре</h3><p>Котлы на открытом огне, пельмени локальных производителей, самоварный травяной чай.</p></div>
+    <div><span class="num">03</span><h3>Семейный формат</h3><p>Детям до 5 лет — бесплатно. Мастер-классы, анимация, Дед Мороз и Снегурочка.</p></div>
+    <div><span class="num">04</span><h3>Музыка и костёр</h3><p>Курай на вершине, живая музыка, DJ‑сет и песни у костра.</p></div>
+    <div><span class="num">05</span><h3>Конкурсы и призы</h3><p>Пельменные состязания, конкурс костюмов, эстафеты, награждение.</p></div>
+    <div><span class="num">06</span><h3>Фотозоны</h3><p>Инеевый лес, скальный гребень и вид на Ямантау — кадры на память.</p></div>
   </div>
 </div></section>
 
@@ -181,10 +207,10 @@ footer a{color:#9cc4ef}
 
 <section id="howto"><div class="wrap">
   <h2>Дорога на <em>высокую</em> кухню</h2>
-  <div class="cards">
-    <div><h3>1. До Белорецка</h3>На машине: из Уфы — 250 км по трассе Р‑316, из Магнитогорска — 80 км. Без машины: до Белорецка поездом или автобусом, далее такси до парковки тропы (10–15 минут).</div>
-    <div><h3>2. До подножия</h3>От Белорецка по указателям к Южноуральской тропе, парковка у лесной дороги — 1 км от трассы.</div>
-    <div><h3>3. Подъём</h3>Набор высоты всего 117 м — проходят даже дети. На вершине ветер и туман: берите тёплую одежду даже в «плюс».</div>
+  <div class="steps">
+    <div class="step"><span class="dot">1</span><div><h3>До Белорецка</h3><p>На машине: из Уфы — 250 км по трассе Р‑316, из Магнитогорска — 80 км. Без машины: до Белорецка поездом или автобусом, далее такси до парковки тропы (10–15 минут).</p></div></div>
+    <div class="step"><span class="dot">2</span><div><h3>До подножия</h3><p>От Белорецка по указателям к Южноуральской тропе, парковка у лесной дороги — 1 км от трассы.</p></div></div>
+    <div class="step"><span class="dot">3</span><div><h3>Подъём</h3><p>Набор высоты всего 117 м — проходят даже дети. На вершине ветер и туман: берите тёплую одежду даже в «плюс».</p></div></div>
   </div>
   <div class="geo">
     <h3>📍 Координаты площадки — Синие скалы</h3>
